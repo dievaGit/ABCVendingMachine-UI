@@ -1,0 +1,8 @@
+<table mat-table [dataSource]="data" class="list-table">
+    <ng-container *ngFor="let col of columnData; let colIndex=index" matColumnDef="{{col}}" >
+      <th mat-header-cell *matHeaderCellDef>{{col}}</th>
+      <td mat-cell *matCellDef="let element" >{{element[col]}}</td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="columnData"></tr>
+    <tr mat-row *matRowDef="let row; columns: columnData;"></tr>
+  </table>

@@ -1,0 +1,18 @@
+.login-card{
+    width: 25rem;
+    padding: 1rem;
+    .title{
+        margin-bottom: 1em;
+    }
+    .login-full-width{
+        width: 100%;
+    }
+    .actions{
+        padding: 1rem;
+        text-align: center;
+        .action-button{
+            width: 200px;
+            margin: auto;
+        }
+    }
+}
