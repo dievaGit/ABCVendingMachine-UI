@@ -48,5 +48,4 @@ export class ApiService {
   createOrder(data: newOrderForm) {
     return this.http.post<any>(this.baseURL + this.orderListUrl, data);
   }
-
 }

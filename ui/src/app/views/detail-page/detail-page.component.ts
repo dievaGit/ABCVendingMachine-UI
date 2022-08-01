@@ -10,11 +10,13 @@ export interface Product {
   price: number;
   stock: number;
 }
+
 @Component({
   selector: 'app-detail-page',
   templateUrl: './detail-page.component.html',
   styleUrls: ['./detail-page.component.scss']
 })
+
 export class DetailPageComponent implements OnInit {
   columnData: string[] = ['productName', 'productCategoryId', 'price', 'stock'];
   dataSource: looseObj[] = [];
@@ -50,9 +52,5 @@ export class DetailPageComponent implements OnInit {
         this.dataSource = []
         break;
     }
-
-
-
   }
-
 }

@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
-import { MatTable } from '@angular/material/table';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { looseObj } from 'src/app/types';
@@ -21,13 +20,12 @@ export interface User {
   userName: string
 }
 
-
-
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
+
 export class DashboardComponent implements OnInit {
 
   columnData: string[] = [];
@@ -57,8 +55,6 @@ export class DashboardComponent implements OnInit {
       disabled: false
     }
   ]
-
-  // @ViewChild(MatTable) table: MatTable<Product>;
 
   constructor(
     private apiService: ApiService,
@@ -120,5 +116,4 @@ export class DashboardComponent implements OnInit {
         break;
     }
   }
-
 }

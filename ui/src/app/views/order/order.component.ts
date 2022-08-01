@@ -13,6 +13,7 @@ interface Transaction {
   templateUrl: './order.component.html',
   styleUrls: ['./order.component.scss']
 })
+
 export class OrderComponent implements OnInit {
   formValues = {
     vendingMachineId: 0,
@@ -61,16 +62,13 @@ export class OrderComponent implements OnInit {
     this.formValues.items = []
     this.apiServices.getAllProductByWareHouseId(ev.value).subscribe(res => {
       res.map(e => e.quantity = 0)
-      //console.log(res)
       this.productData = res
     })
     this.isButtonDisable = !(this.formValues.items.length > 0 && this.formValues.vendingMachineId > 0)
   }
 
   createOrder() {
-    //console.log(this.quantityArr);
     this.formValues.items.map((e: any) => {
-      //console.log(e)
       let quantityObj = this.quantityArr.find((q: any) => q.productWarehouseId == e.productWarehouseId)
       if (quantityObj) {
         e.quantity = parseInt(quantityObj.quantity)
@@ -79,9 +77,6 @@ export class OrderComponent implements OnInit {
     })
 
     this.filteredBody = this.formValues.items.map(({ productId, quantity, productPrice }) => ({ productId, quantity, productPrice }))
-
-
-    console.log(this.filteredBody)
 
     this.orderBody = {
       warehouseId: this.formValues.warehouseId,
@@ -105,13 +100,10 @@ export class OrderComponent implements OnInit {
     } else {
       this.quantityArr.push({ productWarehouseId: p.productWarehouseId, quantity: event.target.value })
     }
-    this.isButtonDisable = !(this.formValues.items.length > 0 && this.formValues.vendingMachineId > 0)
-
+    this.isButtonDisable = !(this.formValues.items.length > 0 && this.formValues.vendingMachineId > 0)    
   }
 
   getQuantity(obj: any) {
-    // console.log(obj)
-    // console.log(this.quantityArr)
     let quantityObj = this.quantityArr.find((q: any) => q.productWarehouseId == obj.productWarehouseId)
     return quantityObj ? quantityObj.quantity : 0
   }
@@ -121,6 +113,4 @@ export class OrderComponent implements OnInit {
       window.location.reload()
     })
   }
-
-
 }

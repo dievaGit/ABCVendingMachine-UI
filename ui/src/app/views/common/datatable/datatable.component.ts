@@ -27,5 +27,4 @@ export class DatatableComponent implements OnInit {
       this.router.navigate([type, id])
     }
   }
-
 }

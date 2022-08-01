@@ -28,9 +28,6 @@ export class LoginPageComponent implements OnInit {
     this.apiService.login(this.formValues).subscribe(resp => {
       localStorage.setItem('userData', JSON.stringify(resp))
       this.router.navigate(['/dashboard'])
-    }
-    )
-
+    })
   }
-
 }
