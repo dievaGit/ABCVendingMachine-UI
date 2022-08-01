@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { MatTable } from '@angular/material/table';
+import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
 import { looseObj } from 'src/app/types';
 
@@ -34,12 +35,35 @@ export class DashboardComponent implements OnInit {
   isAdmin: boolean = false
   selectedTabIndex: number = 0;
   tabData: string[] = ['products', 'warehouses', 'machines', 'orders']
+  tabs: looseObj[] = [
+    {
+      label: 'Products',
+      buttonName: 'New Product',
+      disabled: true
+    },
+    {
+      label: 'Warehouses',
+      buttonName: 'New Warehouses',
+      disabled: true
+    },
+    {
+      label: 'Vending Machines',
+      buttonName: 'New Vending Machine',
+      disabled: true
+    },
+    {
+      label: 'Orders',
+      buttonName: 'New Order',
+      disabled: false
+    }
+  ]
 
   // @ViewChild(MatTable) table: MatTable<Product>;
 
   constructor(
     private apiService: ApiService,
-    private chng: ChangeDetectorRef
+    private chng: ChangeDetectorRef,
+    private route:Router
   ) { }
 
   ngOnInit(): void {
@@ -52,10 +76,6 @@ export class DashboardComponent implements OnInit {
   }
 
   fetchData() {
-
-    console.log(this.selectedTabIndex)
-
-    console.log(this.tabData[this.selectedTabIndex] )
     if (this.tabData[this.selectedTabIndex] === 'products') {
       this.columnData = ['productId', 'warehouseId', 'productName', 'productCategoryId', 'price', 'stock'];
       this.apiService.getProductList().subscribe(res => {
@@ -84,7 +104,7 @@ export class DashboardComponent implements OnInit {
 
       })
     }
-    else if(this.tabData[this.selectedTabIndex] === 'orders') {
+    else if (this.tabData[this.selectedTabIndex] === 'orders') {
       this.columnData = ['orderId', 'vendingMachineId', 'warehouseId', 'totalPrice'];
       this.apiService.getOrderList().subscribe(res => {
         console.log(res)
@@ -94,6 +114,17 @@ export class DashboardComponent implements OnInit {
       })
     }
 
+  }
+
+  openNewForm(button:string){
+    switch (button) {
+      case 'New Order':
+        this.route.navigate(['order'])
+        break;
+    
+      default:
+        break;
+    }
   }
 
 }

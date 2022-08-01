@@ -7,19 +7,14 @@ export interface loginForm {
   pass: string
 }
 
+export interface item{
+  productId: number,
+  quantity: number,
+  productPrice: number
+}
+
 export interface newOrderForm {
-  warehouseId: 1,
-  vendingMachineId: 1,
-  items: [
-      {
-          productId: 1,
-          quantity: 2,
-          ProductPrice: 5
-      },
-      {
-          productId: 2,
-          quantity: 2,
-          ProductPrice: 5
-      }
-  ] 
+  warehouseId: number,
+  vendingMachineId: number,
+  items: item[] 
 }

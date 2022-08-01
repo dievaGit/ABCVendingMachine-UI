@@ -2,48 +2,15 @@
   <div class="container dashboard-container">
     <mat-tab-group mat-stretch-tabs class="example-stretched-tabs mat-elevation-z4" (selectedTabChange)="fetchData()"
       [(selectedIndex)]="selectedTabIndex">
-      <mat-tab label="Products" [disabled]="isAdmin?false:null">
+
+      <mat-tab *ngFor="let tab of tabs; let index = index;" label="{{tab.label}}" [disabled]="isAdmin?false:null">
         <div class="tab-content">
           <div class="action-button-container">
-            <button mat-raised-button color="primary" class="demo-button" disabled>
-              <!-- <mat-icon>Add</mat-icon> -->
-              New Product
+            <button mat-raised-button color="primary" class="demo-button" disabled="{{tab.disabled}}" (click)="openNewForm(tab.buttonName)">
+              {{tab.buttonName}}
             </button>
           </div>
-          <app-datatable [columnData]="columnData" [data]="dataSource"></app-datatable>
-        </div>
-      </mat-tab>
-      <mat-tab label="Warehouses" [disabled]="isAdmin?false:null">
-        <div class="tab-content">
-          <div class="action-button-container">
-            <button mat-raised-button color="primary" class="demo-button" disabled>
-              <!-- <mat-icon>Add</mat-icon> -->
-              New Warehouse
-            </button>
-          </div>
-          <app-datatable [columnData]="columnData" [data]="dataSource"></app-datatable>
-        </div>
-      </mat-tab>
-      <mat-tab label="Vending Machines" [disabled]="isAdmin?false:null">
-        <div class="tab-content">
-          <div class="action-button-container">
-            <button mat-raised-button color="primary" class="demo-button" disabled>
-              <!-- <mat-icon>Add</mat-icon> -->
-              New Vending Machine
-            </button>
-          </div>
-          <app-datatable [columnData]="columnData" [data]="dataSource"></app-datatable>
-        </div>
-      </mat-tab>
-      <mat-tab label="Orders" [disabled]="isAdmin?false:null">
-        <div class="tab-content">
-          <div class="action-button-container">
-            <button mat-raised-button color="primary" class="demo-button">
-              <!-- <mat-icon>Add</mat-icon> -->
-              New Order
-            </button>
-          </div>
-          <app-datatable [columnData]="columnData" [data]="dataSource"></app-datatable>
+          <app-datatable [columnData]="columnData" [data]="dataSource" [selectedTabIndex]="selectedTabIndex"></app-datatable>
         </div>
       </mat-tab>
     </mat-tab-group>

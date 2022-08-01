@@ -6,10 +6,10 @@ import { AppComponent } from './app.component';
 import { LoginPageComponent } from './views/login-page/login-page.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
-import {MatCardModule} from '@angular/material/card';
-import {MatInputModule} from '@angular/material/input';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatTabsModule} from '@angular/material/tabs';
+import { MatCardModule } from '@angular/material/card';
+import { MatInputModule } from '@angular/material/input';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatTabsModule } from '@angular/material/tabs';
 import { DashboardComponent } from './views/dashboard/dashboard.component';
 import { MatTableModule } from '@angular/material/table';
 import { DetailPageComponent } from './views/detail-page/detail-page.component';
@@ -17,6 +17,11 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MatIconModule } from "@angular/material/icon";
 import { DatatableComponent } from './views/common/datatable/datatable.component';
+import { OrderComponent } from './views/order/order.component';
+import { MatOptionModule } from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
+import { MatDividerModule } from '@angular/material/divider';
+import { ApiService } from './services/api.service';
 
 @NgModule({
   declarations: [
@@ -25,6 +30,7 @@ import { DatatableComponent } from './views/common/datatable/datatable.component
     DashboardComponent,
     DetailPageComponent,
     DatatableComponent,
+    OrderComponent,
   ],
   imports: [
     MatButtonModule,
@@ -39,9 +45,12 @@ import { DatatableComponent } from './views/common/datatable/datatable.component
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    MatOptionModule,
+    MatSelectModule,
+    MatDividerModule,
 
   ],
-  providers: [],
+  providers: [ApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

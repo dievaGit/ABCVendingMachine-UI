@@ -8,11 +8,11 @@ import { loginForm, looseObj, newOrderForm } from '../types';
 export class ApiService {
 
   private baseURL = 'http://localhost:44077/api';
-  private loginUrl = '/user';
-  private productListUrl = '/warehouse/products';
-  private warehouseListUrl = '/warehouse';
-  private machineListUrl = '/vendingMachine';
-  private orderListUrl = '/order';
+  private loginUrl = '/users';
+  private productListUrl = '/warehouses/products';
+  private warehouseListUrl = '/warehouses';
+  private machineListUrl = '/vendingMachines';
+  private orderListUrl = '/orders';
 
   constructor(private http: HttpClient) { }
 
@@ -29,8 +29,8 @@ export class ApiService {
     return this.http.get<looseObj[]>(this.baseURL + this.warehouseListUrl);
   }
 
-  getAllProductByWareHouseID(wareHouseId: number) {
-    return this.http.get<looseObj[]>(this.baseURL + this.warehouseListUrl + '/' + wareHouseId);
+  getAllProductByWareHouseId(wareHouseId: number) {
+    return this.http.get<looseObj[]>(this.baseURL + this.warehouseListUrl + '/' + wareHouseId + '/products');
 
   }
 
@@ -46,7 +46,7 @@ export class ApiService {
     return this.http.get<looseObj[]>(this.baseURL + this.orderListUrl);
   }
 
-  createOrderList(data: newOrderForm) {
+  createOrder(data: newOrderForm) {
     return this.http.post<any>(this.baseURL + this.orderListUrl, data);
   }
 

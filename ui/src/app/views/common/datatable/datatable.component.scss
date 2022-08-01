@@ -1,3 +1,8 @@
 .list-table {
     width: 100%;
+    tr.mat-row.cdk-row.list-row.ng-star-inserted{
+        :hover{
+            background: #efefef;
+        }
+    }
 }
