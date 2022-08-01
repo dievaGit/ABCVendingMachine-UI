@@ -25,7 +25,6 @@ export class ApiService {
   }
 
   getwarehouseListUrl() {
-    console.log('ínside api')
     return this.http.get<looseObj[]>(this.baseURL + this.warehouseListUrl);
   }
 

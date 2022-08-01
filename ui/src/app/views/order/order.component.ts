@@ -34,12 +34,6 @@ export class OrderComponent implements OnInit {
     this.formValues.items.forEach((i: any) => {
       totalPrice += this.getQuantity(i) * i.price
     })
-    // .reduce((acc, value) => acc + value, 0);
-    // console.log(basePrice)
-    // return this.formValues.items.map((t: any) => t.price).reduce((acc, value) => acc + value, 0);
-    // this.formValues.items.forEach(i=>{
-
-    // })
     return totalPrice
   }
 
@@ -95,6 +89,7 @@ export class OrderComponent implements OnInit {
       items: this.filteredBody
     }
     this.apiServices.createOrder(this.orderBody).subscribe(res => {
+      this.apiServices.getProductList();
       this.route.navigate(['dashboard']).then(() => {
         window.location.reload()
       })

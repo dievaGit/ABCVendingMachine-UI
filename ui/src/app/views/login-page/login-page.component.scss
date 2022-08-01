@@ -1,6 +1,7 @@
 .login-card{
     width: 25rem;
     padding: 1rem;
+    margin-top: auto;
     .title{
         margin-bottom: 1em;
     }
@@ -14,5 +15,12 @@
             width: 200px;
             margin: auto;
         }
+    }
+}
+
+section{
+    margin-top: 10%;
+    .mat-card.mat-focus-indicator.login-card {
+        margin: auto;
     }
 }

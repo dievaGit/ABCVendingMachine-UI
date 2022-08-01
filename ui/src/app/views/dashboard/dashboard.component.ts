@@ -67,7 +67,6 @@ export class DashboardComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.log(localStorage.getItem('userData'))
     let userData: User = JSON.parse(localStorage.getItem('userData')!)
     this.isAdmin = Boolean(userData.role === "admin")
     if (this.isAdmin) {
@@ -79,17 +78,14 @@ export class DashboardComponent implements OnInit {
     if (this.tabData[this.selectedTabIndex] === 'products') {
       this.columnData = ['productId', 'warehouseId', 'productName', 'productCategoryId', 'price', 'stock'];
       this.apiService.getProductList().subscribe(res => {
-        console.log(res)
         this.dataSource = res;
         this.chng.detectChanges()
 
       })
     }
     else if (this.tabData[this.selectedTabIndex] == "warehouses") {
-      console.log('true')
       this.columnData = ['warehouseId', 'warehouseName', 'location'];
       this.apiService.getwarehouseListUrl().subscribe(res => {
-        console.log(res)
         this.dataSource = res;
         this.chng.detectChanges()
 
@@ -98,7 +94,6 @@ export class DashboardComponent implements OnInit {
     else if (this.tabData[this.selectedTabIndex] == 'machines') {
       this.columnData = ['vendingMachineId', 'vendingMachineName', 'location'];
       this.apiService.getmachineListUrl().subscribe(res => {
-        console.log(res)
         this.dataSource = res;
         this.chng.detectChanges()
 
@@ -107,7 +102,6 @@ export class DashboardComponent implements OnInit {
     else if (this.tabData[this.selectedTabIndex] === 'orders') {
       this.columnData = ['orderId', 'vendingMachineId', 'warehouseId', 'totalPrice'];
       this.apiService.getOrderList().subscribe(res => {
-        console.log(res)
         this.dataSource = res;
         this.chng.detectChanges()
 
